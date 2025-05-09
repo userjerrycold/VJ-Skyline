@@ -1,0 +1,58 @@
+<assembly xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2 http://maven.apache.org/xsd/assembly-1.1.2.xsd">
+    <id>project</id>
+    <formats>
+        <format>zip</format>
+    </formats>
+    <includeBaseDirectory>false
+    </includeBaseDirectory> <!-- disable the creation of root's distribution dir in the archive -->
+
+    <fileSets>
+        <!-- config files -->
+        <fileSet>
+            <directory>${basedir}/src/main/resources</directory>
+            <includes>
+                <include>*.properties</include>
+                <include>*.docx</include>
+                <include>*.xml</include>
+            </includes>
+            <fileMode>0644</fileMode>
+            <outputDirectory>config</outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>${basedir}/src/main/resources/sql</directory>
+            <includes>
+                <include>*.sql</include>
+            </includes>
+            <fileMode>0644</fileMode>
+            <outputDirectory>sql</outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>${basedir}/src/main/resources/doc</directory>
+            <includes>
+                <include>*.docx</include>
+            </includes>
+            <fileMode>0644</fileMode>
+            <outputDirectory>config/doc</outputDirectory>
+        </fileSet>
+        <!-- scripts -->
+        <fileSet>
+            <directory>bin</directory>
+            <includes>
+                <include>*.sh</include>
+            </includes>
+            <fileMode>0755</fileMode>
+            <outputDirectory>/bin</outputDirectory>
+        </fileSet>
+        <!-- executable jar -->
+        <fileSet>
+            <directory>target</directory>
+            <outputDirectory>lib</outputDirectory>
+            <includes>
+                <include>*.jar</include>
+            </includes>
+        </fileSet>
+    </fileSets>
+
+</assembly>
